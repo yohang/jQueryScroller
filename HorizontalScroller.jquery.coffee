@@ -11,9 +11,7 @@ window.fw = {} if not window.fw?
 (($) ->
     # HorizontalScroller class
     # Use it with :
-    # ```coffeescript
     #   hscroller = new window.fw.HorizontalScroller container, options
-    # ```
     #
     # Properties :
     #   `options`       : Merged options, default values in `baseOptions`
@@ -33,20 +31,32 @@ window.fw = {} if not window.fw?
             scrollStep:            150
             offset:                0
             mousewheel:            true
+            scrollbar:             true
 
             # Selectors
-            scrollerSelector:      '[data-scroller=scroller]'
-            contentSelector:       '[data-scroller=content]'
-            innerContentSelector:  '[data-scroller=innercontent]'
-            previousSelector:      '[data-scroller=previous]'
-            nextSelector:          '[data-scroller=next]'
+            scrollerSelector:         '[data-scroller=scroller]'
+            contentSelector:          '[data-scroller=content]'
+            innerContentSelector:     '[data-scroller=innercontent]'
+            previousSelector:         '[data-scroller=previous]'
+            nextSelector:             '[data-scroller=next]'
+            draggerContainerSelector: '[data-scroller=dragger-container]'
+            draggerSelector:          '[data-scroller=dragger]'
 
             # Default elements CSS styles
             scrollerStyles:
                 position: 'relative'
                 top:      0
                 left:     0
+                overflow: 'hidden'
             contentStyles:
+                position: 'absolute'
+                top:      0
+                left:     0
+            draggerContainerStyles:
+                position: 'relative'
+                top:      0
+                left:     0
+            draggerStyles:
                 position: 'absolute'
                 top:      0
                 left:     0
@@ -87,6 +97,30 @@ window.fw = {} if not window.fw?
             @$container.delegate @options.nextSelector,     'click', @next.bind @, 1
             @$container.bind    'mousewheel', @onMousewheel.bind @ if @options.mousewheel
 
+            @initScrollbar() if @options.scrollbar
+
+        #
+        #
+        # Constructs the scrollbar
+        initScrollbar: ->
+            # Retrieve DOM objects
+            @$draggerContainer = @$container.find        @options.draggerContainerSelector
+            @$dragger          = @$draggerContainer.find @options.draggerSelector
+
+            # Set styles
+            @scrollbarWidth = Math.round((@scrollerWidth / @contentWidth) * 100)
+            @$draggerContainer.css @options.draggerContainerStyles
+            @$dragger.css          $.extend {}, @options.draggerStyles,
+                width: @scrollbarWidth + '%'
+
+            # Bind the slide event to update the scrollbar pos
+            $(@).bind 'slide', =>
+                @$dragger.stop().animate
+                    left: (@currentPos / @contentWidth) * 100 + '%'
+                , @options.animateOptions
+
+
+
         #
         #
         # Main slide method, performs the slide action, and cut boundaries
@@ -97,6 +131,9 @@ window.fw = {} if not window.fw?
             @$content.stop().animate
                 left: (-pos) + 'px'
             , @options.animateOptions
+
+            # Trigger a slide event
+            $(@).trigger 'slide'
 
 
         #

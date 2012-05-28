@@ -13,17 +13,31 @@
         scrollStep: 150,
         offset: 0,
         mousewheel: true,
+        scrollbar: true,
         scrollerSelector: '[data-scroller=scroller]',
         contentSelector: '[data-scroller=content]',
         innerContentSelector: '[data-scroller=innercontent]',
         previousSelector: '[data-scroller=previous]',
         nextSelector: '[data-scroller=next]',
+        draggerContainerSelector: '[data-scroller=dragger-container]',
+        draggerSelector: '[data-scroller=dragger]',
         scrollerStyles: {
+          position: 'relative',
+          top: 0,
+          left: 0,
+          overflow: 'hidden'
+        },
+        contentStyles: {
+          position: 'absolute',
+          top: 0,
+          left: 0
+        },
+        draggerContainerStyles: {
           position: 'relative',
           top: 0,
           left: 0
         },
-        contentStyles: {
+        draggerStyles: {
           position: 'absolute',
           top: 0,
           left: 0
@@ -55,7 +69,26 @@
         if (this.options.mousewheel) {
           this.$container.bind('mousewheel', this.onMousewheel.bind(this));
         }
+        if (this.options.scrollbar) {
+          this.initScrollbar();
+        }
       }
+
+      HorizontalScroller.prototype.initScrollbar = function() {
+        var _this = this;
+        this.$draggerContainer = this.$container.find(this.options.draggerContainerSelector);
+        this.$dragger = this.$draggerContainer.find(this.options.draggerSelector);
+        this.scrollbarWidth = Math.round((this.scrollerWidth / this.contentWidth) * 100);
+        this.$draggerContainer.css(this.options.draggerContainerStyles);
+        this.$dragger.css($.extend({}, this.options.draggerStyles, {
+          width: this.scrollbarWidth + '%'
+        }));
+        return $(this).bind('slide', function() {
+          return _this.$dragger.stop().animate({
+            left: (_this.currentPos / _this.contentWidth) * 100 + '%'
+          }, _this.options.animateOptions);
+        });
+      };
 
       HorizontalScroller.prototype.slideTo = function(pos) {
         if (pos > this.maxPos) {
@@ -65,9 +98,10 @@
           pos = 0;
         }
         this.currentPos = pos;
-        return this.$content.stop().animate({
+        this.$content.stop().animate({
           left: (-pos) + 'px'
         }, this.options.animateOptions);
+        return $(this).trigger('slide');
       };
 
       HorizontalScroller.prototype.next = function(offset) {
