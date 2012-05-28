@@ -113,6 +113,13 @@ window.fw = {} if not window.fw?
             @$dragger.css          $.extend {}, @options.draggerStyles,
                 width: @scrollbarWidth + '%'
 
+            # Make the scrollbar draggable
+            @$dragger.draggable
+                axis:        'x'
+                containment: @$draggerContainer
+                drag: (event, ui) =>
+                    @slideTo (ui.position.left / @$draggerContainer.width()) * @contentWidth, false, false
+
             # Bind the slide event to update the scrollbar pos
             $(@).bind 'slide', =>
                 @$dragger.stop().animate
@@ -124,16 +131,21 @@ window.fw = {} if not window.fw?
         #
         #
         # Main slide method, performs the slide action, and cut boundaries
-        slideTo: (pos) ->
+        slideTo: (pos, triggerEvent = true, animate = true) ->
             pos = @maxPos if pos > @maxPos
             pos = 0             if pos < 0
             @currentPos = pos
-            @$content.stop().animate
-                left: (-pos) + 'px'
-            , @options.animateOptions
+
+            if animate
+                @$content.stop().animate
+                    left: (-pos) + 'px'
+                , @options.animateOptions
+            else
+                @$content.css
+                    left: (-pos) + 'px'
 
             # Trigger a slide event
-            $(@).trigger 'slide'
+            $(@).trigger 'slide' if triggerEvent
 
 
         #
