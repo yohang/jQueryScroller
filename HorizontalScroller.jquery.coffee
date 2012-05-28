@@ -58,8 +58,9 @@ window.fw = {} if not window.fw?
                 left:     0
             draggerStyles:
                 position: 'absolute'
-                top:      0
-                left:     0
+                top:         0
+                left:        0
+                'max-width': '100%'
 
             # Animation options
             animateOptions:
