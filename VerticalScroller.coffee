@@ -16,7 +16,7 @@ window.fw = {} if not window.fw?
     class window.fw.VerticalScroller extends window.fw.BaseScroller
         baseOptions =
             # Misc options
-            scrollStep:            25
+            scrollStep:            50
             draggerStyles:
                 position:     'absolute'
                 top:          0

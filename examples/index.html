@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scroller examples</title>
+    <style type="text/css">
+        #container {
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        #scroll1 {
+            height:   300px;
+            left:     0;
+            position: relative;
+            top:      0;
+            width:    550px;
+        }
+
+        #scroll1 .scroller  {
+            display:  inline-block;
+            height: 300px;
+            width:  500px;
+        }
+
+        #scroll1 .dragger-container {
+            display:  inline-block;
+            height:   300px;
+            width:    10px;
+        }
+
+        #scroll1 .dragger {
+            width:      10px;
+            background: red;
+        }
+
+        #scroll2 {
+            height:   350px;
+            left:     0;
+            position: relative;
+            top:      0;
+            width:    500px;
+        }
+
+        #scroll2 .scroller  {
+            height: 300px;
+            width:  500px;
+        }
+
+        #scroll2 p {
+            display: inline-block;
+            height:  300px;
+            width:   300px;
+            vertical-align: top;
+        }
+
+        #scroll2 .dragger-container {
+            height:     10px;
+            width:    500px;
+        }
+
+        #scroll2 .dragger {
+            height:     10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Basic exemple</h1>
+        <div id="scroll1">
+            <a href="#" data-scroller="previous">Up</a>
+            <a href="#" data-scroller="next">Down</a>
+            <div data-scroller="scroller" class="scroller">
+                <div data-scroller="content">
+                    <div data-scroller="innercontent">
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div data-scroller="dragger-container" class="dragger-container">
+                <div data-scroller="dragger" class="dragger"></div>
+            </div>
+        </div>
+
+        <h1>Horizontal exemple</h1>
+        <div id="scroll2" data-scroller="horizontal">
+            <a href="#" data-scroller="previous">Up</a>
+            <a href="#" data-scroller="next">Down</a>
+            <div data-scroller="scroller" class="scroller">
+                <div data-scroller="content">
+                    <div data-scroller="innercontent">
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                        <p>
+                            Accenderat super his incitatum propositum ad nocendum aliqua mulier vilis, quae ad palatium ut
+                            poposcerat intromissa insidias ei latenter obtendi prodiderat a militibus obscurissimis.
+                            quam Constantina exultans ut in tuto iam locata mariti salute muneratam vehiculoque inpositam
+                            per regiae ianuas emisit in publicum, ut his inlecebris alios quoque ad indicanda proliceret
+                            paria vel maiora.
+                        </p>
+
+                        <p>
+                            Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata
+                            magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus
+                            isdemque pares Emissa et Damascus saeculis condita priscis.
+                        </p>
+
+                        <p>
+                            Quam ob rem circumspecta cautela observatum est deinceps et cum edita montium petere coeperint
+                            grassatores, loci iniquitati milites cedunt. ubi autem in planitie potuerint reperiri, quod
+                            contingit adsidue, nec exsertare lacertos nec crispare permissi tela, quae vehunt bina vel
+                            terna, pecudum ritu inertium trucidantur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div data-scroller="dragger-container" class="dragger-container">
+                <div data-scroller="dragger" class="dragger"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="../scroller.jquery.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#scroll1').scroller();
+            $('#scroll2').scroller();
+        })
+    </script>
+
+</body>
+</html>
