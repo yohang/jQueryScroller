@@ -110,14 +110,14 @@ window.fw = {} if not window.fw?
         #
         # Go to next scroll offset(s)
         next: (offset = 1) ->
-            @slideTo @currentPos - @options.scrollStep * offset
+            @slideTo @currentPos + @options.scrollStep * offset
             false
 
         #
         #
         # Go to previous scroll offset(s)
         previous: (offset = 1)  ->
-            @slideTo @currentPos + @options.scrollStep * offset
+            @slideTo @currentPos - @options.scrollStep * offset
             false
 
         #
@@ -125,7 +125,7 @@ window.fw = {} if not window.fw?
         # Listener to the mousewheel event
         onMousewheel: (event, delta) ->
             # Call the `previous` or `next` method, depending of the `delta` sign.
-            @[if delta < 0 then 'previous' else 'next'] Math.abs delta
+            @[if delta > 0 then 'previous' else 'next'] Math.abs delta
             false
 
 
