@@ -54,10 +54,11 @@ window.fw = {} if not window.fw?
                 drag: (event, ui) =>
                     @slideTo (ui.position.top / @$draggerContainer.height()) * @contentSize, false, false
 
+
             # Bind the slide event to update the scrollbar pos
             $(@).bind 'slide', =>
                 @$dragger.stop().animate
-                    top: (@currentPos / @contentSize) * 100 + '%'
+                    top: (@currentPos / @contentSize) * @$draggerContainer.height() + 'px'
                 , @options.animateOptions
 
         #
