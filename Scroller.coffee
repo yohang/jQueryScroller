@@ -1,3 +1,9 @@
+# Hacky polyfill for IE
+if not Function::bind?
+    Function::bind = (context, boundArgs...) ->
+        (args...) =>
+            Array::push.apply boundArgs, args
+            @apply context, boundArgs
 (($) ->
     #
     #
